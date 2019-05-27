@@ -6,18 +6,18 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import static android.provider.BaseColumns._ID;
-import static com.example.android.pets.data.PetsContract.PetsEntry.COLUMN_PET_BREED;
-import static com.example.android.pets.data.PetsContract.PetsEntry.COLUMN_PET_GENDER;
-import static com.example.android.pets.data.PetsContract.PetsEntry.COLUMN_PET_NAME;
-import static com.example.android.pets.data.PetsContract.PetsEntry.COLUMN_PET_WEIGHT;
-import static com.example.android.pets.data.PetsContract.PetsEntry.TABLE_NAME;
+import static com.example.android.pets.data.PetContract.PetsEntry.COLUMN_PET_BREED;
+import static com.example.android.pets.data.PetContract.PetsEntry.COLUMN_PET_GENDER;
+import static com.example.android.pets.data.PetContract.PetsEntry.COLUMN_PET_NAME;
+import static com.example.android.pets.data.PetContract.PetsEntry.COLUMN_PET_WEIGHT;
+import static com.example.android.pets.data.PetContract.PetsEntry.TABLE_NAME;
 
-public class PetsOpenHelper extends SQLiteOpenHelper {
+public class PetDBHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "pets.db";
     private static final int DATABASE_VERSION = 1;
-    private static final String LOG_TAG = PetsOpenHelper.class.getSimpleName();
+    private static final String LOG_TAG = PetDBHelper.class.getSimpleName();
 
-    public PetsOpenHelper(Context context) {
+    public PetDBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
@@ -29,7 +29,7 @@ public class PetsOpenHelper extends SQLiteOpenHelper {
                         COLUMN_PET_NAME + " TEXT NOT NULL," +
                         COLUMN_PET_BREED + " TEXT," +
                         COLUMN_PET_GENDER + " INTEGER NOT NULL," +
-                        COLUMN_PET_WEIGHT + " INTEGER NOT NULL DEFAULT 0);";
+                        COLUMN_PET_WEIGHT + " INTEGER DEFAULT 0);";
         Log.d(LOG_TAG,CREATE_PETS_ENTRIES);
         db.execSQL(CREATE_PETS_ENTRIES);
     }
